@@ -13,7 +13,7 @@ public class PersonaManager {
 
 	private ServicioPersona serv;
 	
-	private String leerPropiedad(String propiedad) {
+	private String leerPropiedad(String propiedad) throws InstanceException {
 		Properties p = new Properties();
 		String propiedadFinal;
 
@@ -22,10 +22,13 @@ public class PersonaManager {
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw new InstanceException("Error al obtener una instancia de ServicioPersona");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("Archivo no encontrado");
+			throw new InstanceException("Error al obtener una instancia de ServicioPersona");
+			
 		}
 
 		if (p.getProperty(propiedad) != null) {
