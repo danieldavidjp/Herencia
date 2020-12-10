@@ -57,8 +57,10 @@ public class PersonaManager {
 			serv = (ServicioPersona) clase.newInstance();
 		} catch (InstantiationException e) {
 			e.printStackTrace();
+			throw new InstanceException("Error al obtener una instancia de ServicioPersona");
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
+			throw new InstanceException("Error al obtener una instancia de ServicioPersona");
 		}
 	}
 
