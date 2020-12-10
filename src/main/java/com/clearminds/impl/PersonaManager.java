@@ -12,7 +12,7 @@ import com.clearminds.model.Persona;
 public class PersonaManager {
 
 	private ServicioPersona serv;
-	
+
 	private String leerPropiedad(String propiedad) throws InstanceException {
 		Properties p = new Properties();
 		String propiedadFinal;
@@ -28,7 +28,7 @@ public class PersonaManager {
 			e.printStackTrace();
 			System.out.println("Archivo no encontrado");
 			throw new InstanceException("Error al obtener una instancia de ServicioPersona");
-			
+
 		}
 
 		if (p.getProperty(propiedad) != null) {
@@ -45,25 +45,17 @@ public class PersonaManager {
 	}
 
 	public PersonaManager() throws InstanceException {
-		String propiedad= leerPropiedad("propiedad1");
-		
+		String propiedad = leerPropiedad("propiedad1");
+
 		Class<?> clase;
 		try {
 			clase = Class.forName(propiedad);
-			System.out.println("Propiedad: "+propiedad);
-		} catch (ClassNotFoundException e) {
+			System.out.println("Propiedad: " + propiedad);
+			serv = (ServicioPersona) clase.newInstance();
+		} catch (Exception e) {
 			e.printStackTrace();
 			throw new InstanceException("Error al obtener una instancia de ServicioPersona");
 
-		}
-		try {
-			serv = (ServicioPersona) clase.newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-			throw new InstanceException("Error al obtener una instancia de ServicioPersona");
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-			throw new InstanceException("Error al obtener una instancia de ServicioPersona");
 		}
 	}
 
