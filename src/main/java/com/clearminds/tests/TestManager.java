@@ -8,7 +8,7 @@ public class TestManager {
 
 	public static void main(String[] args) {
 		
-		Persona p = new Persona("Daniel","Jimenez","123456");
+		Persona p = new Persona("Jaime","Jurado","123456");
 		
 		PersonaManager pm;
 		try {
