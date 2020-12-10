@@ -13,6 +13,8 @@ public class TestManager {
 		
 		pm.insertarPersona(p);
 		
+		
+		
 	}
 
 }
